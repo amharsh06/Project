@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./font/caviarfont.css">
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F7E5E5;
+    width: 100%;
+    height: 100vh;
+    font-family: 'CaviarDreams';
+}
+
+.loginBox {
+    position: absolute;
+    height: 90vh;
+    width: 75%;
+    background-color: #ffffff;
+    border-radius: 30px;
+    top: 5%;
+    left: 12%;
+    box-shadow: -5px 5px 10px 2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.loginForm {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    padding: 60px;
+    text-align: center;
+}
+
+.loginForm h1 {
+    color: #9E1916;
+    font-size: 40px;
+    margin-top: 10px;
+}
+
+.loginForm p {
+    margin-top: 50px;
+    font-size: 18px;
+}
+
+.socialIcons a {
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #9E1916;
+    padding: 14px;
+    display: inline-block;
+    margin: 24px 20px;
+}
+
+.loginForm .other {
+    margin-top: 20px;
+}
+
+.loginForm input {
+    display: block;
+    width: 67%;
+    outline: none;
+    border: none;
+    padding: 20px 20px 20px 24px;
+    background-color: #EFEFEF;
+    margin: 32px auto 0px;
+    font-size: 16px;
+}
+
+.loginForm .forgot {
+    text-decoration: none;
+    margin-top: 30px;
+    display: block;
+    color: #9E1916;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.loginForm button {
+    padding: 10px 32px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #9E1916;
+    margin-top: 50px;
+    border-radius: 20px;
+    border: none;
+}
+
+.socialIcons i {
+    font-size: 26px;
+    color: #9E1916;
+}
+
+.imgBack {
+    position: absolute;
+    background-image: url(../img/abstract-low-poly-banner-with-orange-light-shade_1017-24636-1.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    border-radius: 50%;
+    width: 900px;
+    height: 900px;
+    left: 50%;
+    top: -3%;
+}
+  </style>
+    <script>
+          function formData() {
+        let u = document.getElementById("userId").value;
+        let i = document.getElementById("email").value;
+        let n = document.getElementById("password").value;
+    
+        let obj = {
+            userId : u,
+            email : i,
+            password : n,
+        }
+    
+        let localData = JSON.parse(localStorage.getItem("user_I"));
+        if (localData !== null) {
+            localData.push(obj);
+            localStorage.setItem("user_I", JSON.stringify(localData));
+        } else {
+            localStorage.setItem("user_I", JSON.stringify([obj]))
+        }
+    }
+    </script>
+    </head>
+  
+    
+<body>
+    <div class="loginBox">
+        <div class="loginForm">
+            <h1>Registration</h1>
+            <p>Create your Account Using</p>
+            <div class="socialIcons">
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                    <i class="fa-brands fa-google"></i>
+                </a>
+            </div>
+            <p class="other">or Use Your Account</p>
+            <form action="">
+                <input type="text" name="userId" id="userId" placeholder="Enter User Id">
+                <input type="text" name="email" id="email" placeholder="Email">
+                <input type="password" name="password" id="password" placeholder="Password">
+                
+                <button type="submit" onclick="formData()">Registration</button>
+                <a href="./LoginPage.html" class="forgot">Login</a>
+            </form>
+        </div>
+        <div class="imgBack">
+
+        </div>
+    </div>
+</body>
+
+</html>
