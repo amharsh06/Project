@@ -12,7 +12,7 @@
 
 <body>
     <div id="listPro">
-       
+
     </div>
 
 </body>
@@ -22,9 +22,9 @@
         let list = "";
         localdata.map((d, i) => {
             list += "<div class='gucci'>";
-            list += "<img src='../images/"+ d.Image + "'>";
-            list += " <P> Name : " + d.Name + "<br> Available Quentity : " + d.PriceQuantity + " <br> Price : " + d.Price + "</P > ";
-            list += "<button id='btnCart' onclick='cartFun("+d.id+")'>Add To Cart</button>";
+            list += "<img src='../images/" + d.Image + "'>";
+            list += " <P> Name : " + d.Name + "<br> Available Quentity : " + d.Quantity + " <br> Price : " + d.Price + "</P > ";
+            list += "<button id='btnCart' onclick='cartFun(" + d.id + ")'>Add To Cart</button>";
             list += "<button id='btnbuy' >Buy</button>";
             list += "</div>";
 
@@ -32,16 +32,51 @@
         document.getElementById("listPro").innerHTML = list;
     }
     window.onload = listProducts();
-    function cartFun(id){
-    let localdata = JSON.parse(localStorage.getItem("cart"));
+    function cartFun(fid) {
 
-    if (localdata !== null) {
-        localdata.push(id);
-            localStorage.setItem("cart", JSON.stringify(localdata));
-        } else {
-            localStorage.setItem("cart", JSON.stringify([id]))
+        let localdata = JSON.parse(localStorage.getItem("products"));
+        localdata.map((d, i) => {
+            if (d.id == fid) {
+                if (d.Quantity > 0) {
+                    d.Quantity -= 1;
+
+                    let localcart = JSON.parse(localStorage.getItem("Cart"));
+                    let obj = {
+                        id: d.id,
+                        Que: 1,
+                    }
+                    if (localcart !== null) {
+                        
+                        for (let i in localcart) {
+                            if (fid == localcart[i].id) {
+                                console.log(localcart[i].Que += 1);
+                                
+                            } else {
+                                localcart.push(obj);
+                                localStorage.setItem("Cart", JSON.stringify(localcart));
+                            }
+                        }
+                        
+                        
+                        
+                    } else {
+                    localStorage.setItem("Cart", JSON.stringify([obj]))
+                }
+
+            } else {
+                alert("crash");
+            }
+        }else {
+
+            //none
         }
-        
+    })
+        localStorage.setItem("products", JSON.stringify(localdata));
+        // localStorage.setItem("Cart", JSON.stringify(localcart));
+        listProducts();
+
+
     }
 </script>
+
 </html>

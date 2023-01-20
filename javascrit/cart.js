@@ -2,7 +2,7 @@ window.onload = ShowCartData;
 function ShowCartData(){
     let htmlData = "";
     let Prodata = JSON.parse(localStorage.getItem("products"));
-    let CartData = JSON.parse(localStorage.getItem("cart"));
+    let CartData = JSON.parse(localStorage.getItem("Cart"));
     CartData.map((object , index)=>{
        for(let i in Prodata){
         if(object == Prodata[i].id){
