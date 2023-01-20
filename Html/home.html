@@ -46,17 +46,21 @@
                         Que: 1,
                     }
                     if (localcart !== null) {
-                        
+                        let flag = 0;
                         for (let i in localcart) {
                             if (fid == localcart[i].id) {
-                                console.log(localcart[i].Que += 1);
-                                
+                                localcart[i].Que += 1;
+                                flag=1;
                             } else {
-                                localcart.push(obj);
-                                localStorage.setItem("Cart", JSON.stringify(localcart));
+                                flag = 0;
                             }
                         }
-                        
+                        if(flag == 0){
+                            localcart.push(obj);
+                                localStorage.setItem("Cart", JSON.stringify(localcart));
+                        }else{
+                            localStorage.setItem("Cart", JSON.stringify(localcart));
+                        }
                         
                         
                     } else {
